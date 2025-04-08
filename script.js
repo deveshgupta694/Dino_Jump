@@ -4,7 +4,7 @@ let score = -1
 let cross = undefined
 let change = undefined
 
-const but = document.querySelector('button')
+const but = document.querySelector('.Play')
 but.addEventListener('click' , function(){
     score = 0
     cross = true
@@ -47,11 +47,19 @@ document.addEventListener('keydown' ,  function(event){
     }
 })
 
+const cont = document.querySelector('.gameConatiner')
 
-document.body.addEventListener('click' ,  function(event){
-    // console.log(typeof event.target.tagName);
-    if(event.target.tagName == BUTTON)event.stopPropagation()
-    goUp()
+cont.addEventListener('click' ,  function(event){
+    console.log(event.target.tagName);
+    if(event.target.tagName === "BUTTON")
+    {
+        event.stopPropagation();
+        console.log("click occured");   
+    }
+    else
+    {
+        goUp();
+    }
 })
 
 let fn = function()
@@ -95,7 +103,7 @@ let fn = function()
             cross = false
             let aniDur = parseFloat(window.getComputedStyle(obstracle ,null).getPropertyValue('animation-duration'))
             if(aniDur > 2.3)aniDur -= 0.1;
-            console.log(aniDur);
+            // console.log(aniDur);
             obstracle.style.animationDuration = aniDur + 's'
         }
     }
